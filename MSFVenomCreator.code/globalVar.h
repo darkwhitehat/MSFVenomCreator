@@ -60,11 +60,11 @@ char 	tbl_lhost[]		= "Enter your LHOST like [192.168.0.1] : ";
 char 	tbl_lport[]		= "Enter your LPORT like [4444] : ";
 
 // tableau d'iteration et noops
-char 	tbl_iterates[]		= "Enter number of iterations : ";
-char 	tbl_noops[]		= "Enter number of nops : ";
+char 	tbl_iterates[]		= "Enter number of iterations [-i or --iterations] : ";
+char 	tbl_noops[]		= "Enter number of nops [-n or --nopsled] : ";
 
 // tableau nom du fichier
-char 	tbl_filename[]		= "Enter name File with extend : ";
+char 	tbl_filename[]		= "Enter name File with extend (myFile.exe) : ";
 
 // tableau en tête du tableau
 char	tbl_entete_1[]		= "\nMatching Modules\n================\n\n   #    Name                                                        Disclosure Date  Rank    Check  Description\n   -    ----                                                        ---------------  ----    -----  -----------\n";
@@ -775,7 +775,7 @@ char	tbl_quickpayload_6[]		= " [6]   -e --encoder       The encoder to use (use 
 char	tbl_quickpayload_7[]		= " [ ]   -i --iterations    The number of times to encode the payload\n";
 char	tbl_quickpayload_8[]		= " [ ]   -n --nopsled       Prepend a nopsled of [length] size on to the payload\n";
 char	tbl_quickpayload_9[]		= " [ ]   --smallest         Generate the smallest possible payload using all available encoders\n";
-char	tbl_quickpayload_10[]		= " []    -k --keep          Preserve the --template behaviour and inject the payload as a new thread\n";
+char	tbl_quickpayload_10[]		= " [ ]   -k --keep          Preserve the --template behaviour and inject the payload as a new thread\n";
 char	tbl_quickpayload_11[]		= " [11]  -f --format        Output format (use --list formats to list)\n";
 
 char	quickpayload_1[]		= "arch";
