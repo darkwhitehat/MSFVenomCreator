@@ -4,9 +4,7 @@ It is in progress, but it work well.
 # MSFVenomCreator
 To work, you need to have msfvenom installed on your computer.
 
-If you use generator, you need to add Folder named "output" to record yours payloads.
-
-To make useable you need to compile MSFVenomCreator.c whit commande line : 
-# gcc -o MSFVenomCreator  MSFVenomCreator.c
+To compile MSFVenomCreator.c use this commande line : 
+> gcc -o MSFVenomCreator  MSFVenomCreator.c
 to launch  type:
-# ./MSFVenomCreator
+> ./MSFVenomCreator
