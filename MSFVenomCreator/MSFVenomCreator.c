@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/stat.h>
 #include "globalVar.h"
 #include "banner.h"
 #include "platform.h"
@@ -38,7 +39,7 @@ char* concat(const char *s1, const char *s2)
 
 int main()
 {
-
+	
 	Choice = InterChoices();
 	
 	if (Choice =="quick")
@@ -266,6 +267,7 @@ int main()
 		payloadBuild = concat(payloadBuild, filenameBuild);
 
 		// chemin vers le dossier output
+		
 		char cwd[500];
 		char folder[10] = "/output/"; 
 		   if (getcwd(cwd, sizeof(cwd)) != NULL) {
@@ -286,12 +288,38 @@ int main()
 		if(exec=="exit") {main();}
 		else
 		{
+			struct stat file_stat;
+			pathoutput = concat(cwd,folder);
+			if (stat(pathoutput,&file_stat) < 0) 
+			{
+				mkdirB= concat(mkdirB,cwd);
+				mkdirB= concat(mkdirB,folder);
+			 	system(mkdirB);
+			}
+			
+	
 			printf("\nPlease wait while creating payload...\n\n");
 			printf(BlueF);
 			system(payloadBuild);
 			printf(white);
 			printf("\n");
-			
+
+			int selectVal4	=0;
+			int loopWhile4	=1;
+
+			printf(white);
+			printf("%s","\nType [0] to exit : ");
+			scanf("%d", &selectVal4);
+					
+			switch(selectVal4) 
+			{
+				case 0 :
+				 	loopWhile4=0;
+					break;
+				      	default :
+				 	loopWhile4=1;
+			}
+
 		}
 	}
 

