@@ -51,7 +51,7 @@ int main()
 		{
 			banner();
 			char* quickpayloadhelp = selectquickpayloadhelp();
-			printf("%s",quickpayload_2);
+			//printf("%s",quickpayload_2);
 
 			if(quickpayloadhelp==quickpayload_1)
 			{
@@ -127,7 +127,8 @@ int main()
 			else { loopWhile1=0;}
 	
 		}
-		platformSelected ="";	
+		Choice ="";	
+		system("clear");
 		main();
 
 	}
@@ -231,7 +232,7 @@ int main()
 			// Type Proc architecture
 			char* TypeArch= selectArch();
 			// si on est sur type x64
-			if(TypeArch=="exit") {main();}
+			if(TypeArch=="exit") {payloadBuild="msfvenom -p ";  main();}
 			payloadBuild = concat(payloadBuild, payloadArch);
 			payloadBuild = concat(payloadBuild, TypeArch);
 
@@ -242,7 +243,7 @@ int main()
 			// Type Encoder
 			char* TypeEncoder= selectPayloadEncoder();
 			// si on est sur type upexec
-			if(TypeEncoder=="exit") {main();}
+			if(TypeEncoder=="exit") {payloadBuild="msfvenom -p ";  main();main();}
 			payloadBuild = concat(payloadBuild, TypeEncoder);
 
 			// Type iterations
@@ -259,7 +260,7 @@ int main()
 
 		// Type executable formats
 		char* TypeFormatsExe= selectExeformats();
-		if(TypeFormatsExe=="exit") {main();}
+		if(TypeFormatsExe=="exit") {payloadBuild="msfvenom -p ";  main();main();}
 		payloadBuild = concat(payloadBuild, TypeFormatsExe);
 
 		// Type name file
@@ -285,7 +286,7 @@ int main()
 	 	
 		// demande exécution de la commande
 		char* exec= createPayload();
-		if(exec=="exit") {main();}
+		if(exec=="exit") {payloadBuild="msfvenom -p ";  main();}
 		else
 		{
 			struct stat file_stat;
@@ -322,7 +323,8 @@ int main()
 
 		}
 	}
-
+	Choice="";
+	payloadBuild="msfvenom -p "; 
 	main();
 
 }
