@@ -39,9 +39,9 @@ char* concat(const char *s1, const char *s2)
 int main()
 {
 
- 	platformSelected = selectPlatform();
+	Choice = InterChoices();
 	
-	if (platformSelected =="quick")
+	if (Choice =="quick")
 	{
 		int selectVal	=0;
 		int loopWhile1	=1;
@@ -130,165 +130,169 @@ int main()
 		main();
 
 	}
-	else if (platformSelected =="windows")
-	{	
-		// Type de payload à sélectionner
-		char* payloadTypeSelected = selectPayloadType();
-
-		// selon les cas full payload à sélectionner
-		if(payloadTypeSelected=="autre") 
-		{
-			char* TypeAutre = selectPayloadTypeAutre();
-			// si on est sur type autre
-			if(TypeAutre=="exit") {main();}
-			payloadBuild = concat(payloadBuild, TypeAutre);
-		}
-		else if(payloadTypeSelected=="dllinject") 
-		{		
-			char* TypeDllinject = selectPayloadTypeDllinject();
-			// si on est sur type dllinject
-			if(TypeDllinject=="exit") {main();}
-			payloadBuild = concat(payloadBuild, TypeDllinject);
-		}
-		else if(payloadTypeSelected=="encrypted_shell") 
-		{
-			char* TypeEncryptShell= selectPayloadTypeEncryptShell();
-			// si on est sur type encrypt shell
-			if(TypeEncryptShell=="exit") {main();}
-			payloadBuild = concat(payloadBuild, TypeEncryptShell);
-
-		}
-		else if(payloadTypeSelected=="meterpreter") 
-		{
-			char* TypeMeterpreter= selectPayloadTypeMeterpreter();
-			// si on est sur type meterpreter
-			if(TypeMeterpreter=="exit") {main();}
-			payloadBuild = concat(payloadBuild, TypeMeterpreter);
-		}
-		else if(payloadTypeSelected=="patchupdllinject") 
-		{
-			char* TypePatchupddlinject= selectPayloadTypePatchupddlinject();
-			// si on est sur type patchupdllinject
-			if(TypePatchupddlinject=="exit") {main();}
-			payloadBuild = concat(payloadBuild, TypePatchupddlinject);
-		}
-		else if(payloadTypeSelected=="patchupmeterperter") 
-		{
-			char* TypePatchupMeterperter= selectPayloadTypePatchupMeterpreter();
-			// si on est sur type patchupmeterperter
-			if(TypePatchupMeterperter=="exit") {main();}
-			payloadBuild = concat(payloadBuild, TypePatchupMeterperter);
-		}
-		else if(payloadTypeSelected=="shell") 
-		{
-			char* TypeSell= selectPayloadTypeSell();
-			// si on est sur type shell
-			if(TypeSell=="exit") {main();}
-			payloadBuild = concat(payloadBuild, TypeSell);
-		}
-		else if(payloadTypeSelected=="upexec") 
-		{
-			char* TypeUpexec= selectPayloadTypeUpexec();
-			// si on est sur type upexec
-			if(TypeUpexec=="exit") {main();}
-			payloadBuild = concat(payloadBuild, TypeUpexec);
-		}
-		else if(payloadTypeSelected=="vncinject") 
-		{
-			char* Typevncinject= selectPayloadTypevncinject();
-			// si on est sur type vncinject
-			if(Typevncinject=="exit") {main();}
-			payloadBuild = concat(payloadBuild, Typevncinject);
-		}
-		else if(payloadTypeSelected=="x64") 
-		{
-			char* Typex64= selectPayloadTypeX64();
-			// si on est sur type x64
-			if(Typex64=="exit") {main();}
-			payloadBuild = concat(payloadBuild, Typex64);
-		}
-
-
-		else if(payloadTypeSelected=="exit") {main();}
- 
-	}
-	
-	// Type lhost
-	selectLHOST();
-	payloadBuild = concat(payloadBuild, lhostBuild);
-	payloadBuild = concat(payloadBuild, lhost);
-
-	// Type lport
-	selectLPOST();
-	payloadBuild = concat(payloadBuild, lportBuild);
-	payloadBuild = concat(payloadBuild, lport);
-	
-        {
-		// Type Proc architecture
-		char* TypeArch= selectArch();
-		// si on est sur type x64
-		if(TypeArch=="exit") {main();}
-		payloadBuild = concat(payloadBuild, payloadArch);
-		payloadBuild = concat(payloadBuild, TypeArch);
-
-		// Add Platform
-		payloadBuild = concat(payloadBuild, payloadPlatform);
-		payloadBuild = concat(payloadBuild, platform);
-
-		// Type Encoder
-		char* TypeEncoder= selectPayloadEncoder();
-		// si on est sur type upexec
-		if(TypeEncoder=="exit") {main();}
-		payloadBuild = concat(payloadBuild, TypeEncoder);
-
-		// Type iterations
-		selectIterations();
-		payloadBuild = concat(payloadBuild, iteratesBuild);
-		payloadBuild = concat(payloadBuild, iterates);
-
-		// Type Noops
-		selectNoops();
-		payloadBuild = concat(payloadBuild, noopsBuild);
-		payloadBuild = concat(payloadBuild, noops);
-
-        }
-
-	// Type executable formats
-	char* TypeFormatsExe= selectExeformats();
-	if(TypeFormatsExe=="exit") {main();}
-	payloadBuild = concat(payloadBuild, TypeFormatsExe);
-
-	// Type name file
-	selectNameFile();
-	payloadBuild = concat(payloadBuild, filenameBuild);
-
-	// chemin vers le dossier output
-	char cwd[500];
-	char folder[10] = "/output/"; 
-	   if (getcwd(cwd, sizeof(cwd)) != NULL) {
-	       printf("Current working dir: %s\n", cwd);
-		payloadBuild = concat(payloadBuild, cwd);
-		payloadBuild = concat(payloadBuild, folder);
-		payloadBuild = concat(payloadBuild, filename);
-	   } else {
-	       perror("getcwd() error");
-	       return 1;
-	   }
-	
-	// Show banner end
-	banner();
- 	
-	// demande exécution de la commande
-	char* exec= createPayload();
-	if(exec=="exit") {main();}
-	else
+	else if (Choice =="SBS")
 	{
-		printf("\nPlease wait while creating payload...\n\n");
-		printf(BlueF);
-		system(payloadBuild);
-		printf(white);
-		printf("\n");
+		platformSelected=selectPlatform();
+		if (platformSelected =="windows")
+		{	
+			// Type de payload à sélectionner
+			char* payloadTypeSelected = selectPayloadType();
+
+			// selon les cas full payload à sélectionner
+			if(payloadTypeSelected=="autre") 
+			{
+				char* TypeAutre = selectPayloadTypeAutre();
+				// si on est sur type autre
+				if(TypeAutre=="exit") {main();}
+				payloadBuild = concat(payloadBuild, TypeAutre);
+			}
+			else if(payloadTypeSelected=="dllinject") 
+			{		
+				char* TypeDllinject = selectPayloadTypeDllinject();
+				// si on est sur type dllinject
+				if(TypeDllinject=="exit") {main();}
+				payloadBuild = concat(payloadBuild, TypeDllinject);
+			}
+			else if(payloadTypeSelected=="encrypted_shell") 
+			{
+				char* TypeEncryptShell= selectPayloadTypeEncryptShell();
+				// si on est sur type encrypt shell
+				if(TypeEncryptShell=="exit") {main();}
+				payloadBuild = concat(payloadBuild, TypeEncryptShell);
+
+			}
+			else if(payloadTypeSelected=="meterpreter") 
+			{
+				char* TypeMeterpreter= selectPayloadTypeMeterpreter();
+				// si on est sur type meterpreter
+				if(TypeMeterpreter=="exit") {main();}
+				payloadBuild = concat(payloadBuild, TypeMeterpreter);
+			}
+			else if(payloadTypeSelected=="patchupdllinject") 
+			{
+				char* TypePatchupddlinject= selectPayloadTypePatchupddlinject();
+				// si on est sur type patchupdllinject
+				if(TypePatchupddlinject=="exit") {main();}
+				payloadBuild = concat(payloadBuild, TypePatchupddlinject);
+			}
+			else if(payloadTypeSelected=="patchupmeterperter") 
+			{
+				char* TypePatchupMeterperter= selectPayloadTypePatchupMeterpreter();
+				// si on est sur type patchupmeterperter
+				if(TypePatchupMeterperter=="exit") {main();}
+				payloadBuild = concat(payloadBuild, TypePatchupMeterperter);
+			}
+			else if(payloadTypeSelected=="shell") 
+			{
+				char* TypeSell= selectPayloadTypeSell();
+				// si on est sur type shell
+				if(TypeSell=="exit") {main();}
+				payloadBuild = concat(payloadBuild, TypeSell);
+			}
+			else if(payloadTypeSelected=="upexec") 
+			{
+				char* TypeUpexec= selectPayloadTypeUpexec();
+				// si on est sur type upexec
+				if(TypeUpexec=="exit") {main();}
+				payloadBuild = concat(payloadBuild, TypeUpexec);
+			}
+			else if(payloadTypeSelected=="vncinject") 
+			{
+				char* Typevncinject= selectPayloadTypevncinject();
+				// si on est sur type vncinject
+				if(Typevncinject=="exit") {main();}
+				payloadBuild = concat(payloadBuild, Typevncinject);
+			}
+			else if(payloadTypeSelected=="x64") 
+			{
+				char* Typex64= selectPayloadTypeX64();
+				// si on est sur type x64
+				if(Typex64=="exit") {main();}
+				payloadBuild = concat(payloadBuild, Typex64);
+			}
+
+
+			else if(payloadTypeSelected=="exit") {main();}
+	 
+		}
 		
+		// Type lhost
+		selectLHOST();
+		payloadBuild = concat(payloadBuild, lhostBuild);
+		payloadBuild = concat(payloadBuild, lhost);
+
+		// Type lport
+		selectLPOST();
+		payloadBuild = concat(payloadBuild, lportBuild);
+		payloadBuild = concat(payloadBuild, lport);
+		
+		{
+			// Type Proc architecture
+			char* TypeArch= selectArch();
+			// si on est sur type x64
+			if(TypeArch=="exit") {main();}
+			payloadBuild = concat(payloadBuild, payloadArch);
+			payloadBuild = concat(payloadBuild, TypeArch);
+
+			// Add Platform
+			payloadBuild = concat(payloadBuild, payloadPlatform);
+			payloadBuild = concat(payloadBuild, platform);
+
+			// Type Encoder
+			char* TypeEncoder= selectPayloadEncoder();
+			// si on est sur type upexec
+			if(TypeEncoder=="exit") {main();}
+			payloadBuild = concat(payloadBuild, TypeEncoder);
+
+			// Type iterations
+			selectIterations();
+			payloadBuild = concat(payloadBuild, iteratesBuild);
+			payloadBuild = concat(payloadBuild, iterates);
+
+			// Type Noops
+			selectNoops();
+			payloadBuild = concat(payloadBuild, noopsBuild);
+			payloadBuild = concat(payloadBuild, noops);
+
+		}
+
+		// Type executable formats
+		char* TypeFormatsExe= selectExeformats();
+		if(TypeFormatsExe=="exit") {main();}
+		payloadBuild = concat(payloadBuild, TypeFormatsExe);
+
+		// Type name file
+		selectNameFile();
+		payloadBuild = concat(payloadBuild, filenameBuild);
+
+		// chemin vers le dossier output
+		char cwd[500];
+		char folder[10] = "/output/"; 
+		   if (getcwd(cwd, sizeof(cwd)) != NULL) {
+		       printf("Current working dir: %s\n", cwd);
+			payloadBuild = concat(payloadBuild, cwd);
+			payloadBuild = concat(payloadBuild, folder);
+			payloadBuild = concat(payloadBuild, filename);
+		   } else {
+		       perror("getcwd() error");
+		       return 1;
+		   }
+		
+		// Show banner end
+		banner();
+	 	
+		// demande exécution de la commande
+		char* exec= createPayload();
+		if(exec=="exit") {main();}
+		else
+		{
+			printf("\nPlease wait while creating payload...\n\n");
+			printf(BlueF);
+			system(payloadBuild);
+			printf(white);
+			printf("\n");
+			
+		}
 	}
 
 	main();

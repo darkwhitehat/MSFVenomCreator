@@ -34,7 +34,7 @@ void banner()
 	printf(yellow) ;
 	printf(" ==========================================================================\n");
 	
-if (platformSelected =="quick")
+if (Choice =="quick")
 {
 	printf(Green) ; 
 	printf(" Your payload examples:\n");
